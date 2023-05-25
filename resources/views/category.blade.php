@@ -1,25 +1,23 @@
 @extends("layouts.layout")
+@section("title",$category->name)
 @section("main")
     <div class="row">
         <div class="col-lg-3 col-md-5">
             @include("html.home.sidebar")
         </div>
         <div class="col-lg-9 col-md-7">
-            @include("html.home.discount")
             <div class="filter__item">
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="filter__sort">
-                            <span>Sort By</span>
-                            <select>
-                                <option value="0">Default</option>
-                                <option value="0">Default</option>
-                            </select>
+                            <span>Show: </span>
+                            <a href="{{url()->full()."&limit=12"}}">12 </a> |
+                            <a href="{{url()->full()."&limit=18"}}">18</a> products
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <div class="filter__found">
-                            <h6><span>16</span> Products found</h6>
+                            <h6><span>{{$products->total()}}</span> Products found</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-3">

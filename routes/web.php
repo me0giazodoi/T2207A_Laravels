@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[\App\Http\Controllers\WebController::class,"home"]);
+Route::get("/shop",[\App\Http\Controllers\WebController::class,"shop"]);
+Route::get("/search",[\App\Http\Controllers\WebController::class,"search"]);
+Route::get("/product/{product:slug}",[\App\Http\Controllers\WebController::class,"product"]);
+Route::get("/category/{category:slug}",[\App\Http\Controllers\WebController::class,"category"]);
+Route::get("/cart",[\App\Http\Controllers\WebController::class,"cart"]);
+Route::get("/add-to-cart/{product}",[\App\Http\Controllers\WebController::class,"addToCart"]);
+Route::get("/checkout",[\App\Http\Controllers\WebController::class,"checkout"]);
+Route::post("/checkout",[\App\Http\Controllers\WebController::class,"placeOrder"]);
+Route::get("/thank-you/{order}",[\App\Http\Controllers\WebController::class,"thankYou"]);
+Route::get('success-transaction,{order}', [\App\Http\Controllers\WebController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction/{order}', [\App\Http\Controllers\WebController::class, 'cancelTransaction'])->name('cancelTransaction');
